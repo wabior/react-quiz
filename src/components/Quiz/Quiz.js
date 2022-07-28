@@ -13,7 +13,7 @@ function Quiz() {
     }, []);
 
     return (
-        <div className='container border p-0'>
+        <div className='container border p-0 pb-md-5 mb-md-5 d-flex flex-column align-items-center h-75 justify-content-center'>
             {questions
                 ? <>
                     <Question question={questions[0]['question']}/>
