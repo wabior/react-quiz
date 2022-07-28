@@ -1,25 +1,24 @@
-import {logDOM} from "@testing-library/react";
-
 function getQuestions() {
     const url = 'https://jaroslawwabich.eu/api/question';
 
     const load = async () => {
         try {
-            let data = await fetch(url, {
+            let response = await fetch(url, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
                 }
             });
-            if (!data.ok) {
+            if (!response.ok) {
                 throw Error('Brak pytań');
             }
-            return await data.json();
+            return await response.json();
 
         } catch (err) {
             console.error(err.message)
         }
     }
+
     return load();
 }
 

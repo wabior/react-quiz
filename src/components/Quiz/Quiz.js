@@ -1,24 +1,34 @@
-import React, {Component} from "react";
+import React, {useEffect, useState} from "react";
 import Question from "./Question/Question";
 import Answer from "./Answer/Answer";
 import getQuestions from "./getQuestions";
 
-getQuestions().then(a => console.log(a));
+function Quiz() {
 
-class Quiz extends Component {
+    const [questions, setQuestions] = useState(null);
 
-    render() {
-        return (
-            <div className={'container border p-0'}>
-                <Question/>
-                <div className="row m-0">
-                    <Answer/><Answer/>
-                    <Answer/><Answer/>
-                </div>
-                <button type={'submit'} className={'btn btn-outline-secondary px-5 my-4'}>Dalej</button>
+    useEffect(() => {
+        getQuestions()
+            .then(data => setQuestions(data));
+    }, []);
+
+    return (
+        <div className='container border p-0'>
+            {questions && questions.map((question) => {
+                return (
+                    <div key={question.id}>
+                        {question.id} {question.question}
+                    </div>
+                )
+            })}
+            <Question/>
+            <div className="row m-0">
+                <Answer/><Answer/>
+                <Answer/><Answer/>
             </div>
-        );
-    }
+            <button type={'submit'} className={'btn btn-outline-secondary px-5 my-4'}>Dalej</button>
+        </div>
+    );
 }
 
 export default Quiz;
