@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Question from "./Question/Question";
-import Answer from "./Answer/Answer";
 import getQuestions from "./getQuestions";
+import Answers from "./Answer/Answers";
 
 function Quiz() {
 
@@ -14,11 +14,8 @@ function Quiz() {
 
     return (
         <div className='container border p-0'>
-            {questions && <Question question={questions[0]['question']} />}
-            <div className="row m-0">
-                <Answer/><Answer/>
-                <Answer/><Answer/>
-            </div>
+            {questions && <Question question={questions[0]['question']}/>}
+            {questions && <Answers question={questions[0]}/>}
             <button type={'submit'} className={'btn btn-outline-secondary px-5 my-4'}>Dalej</button>
         </div>
     );

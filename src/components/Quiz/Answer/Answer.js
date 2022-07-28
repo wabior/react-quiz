@@ -1,10 +1,10 @@
 import React from "react";
 
-function Answer() {
+function Answer({ answer }) {
     return (
         <div className={"col-6 p-3"}>
             <button type={"button"} className={'btn btn-outline-secondary w-100'}>
-                Answer
+                { answer }
             </button>
         </div>
     );
