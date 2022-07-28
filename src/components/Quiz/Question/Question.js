@@ -1,8 +1,11 @@
 import React from "react";
 
-function Question({ question }) {
+function Question({ question, questionNo, questionsCount }) {
     return (
-        <div className={'p-3 border m-0'}>{ question }</div>
+        <div>
+            <div>Pytanie { questionNo } / {questionsCount}</div>
+            <div className={'h2 p-3 m-0'}>{ question }</div>
+        </div>
     );
 }
 
