@@ -14,9 +14,14 @@ function Quiz() {
 
     return (
         <div className='container border p-0'>
-            {questions && <Question question={questions[0]['question']}/>}
-            {questions && <Answers question={questions[0]}/>}
-            <button type={'submit'} className={'btn btn-outline-secondary px-5 my-4'}>Dalej</button>
+            {questions
+                ? <>
+                    <Question question={questions[0]['question']}/>
+                    <Answers question={questions[0]}/>
+                    <button type={'submit'} className={'btn btn-outline-secondary px-5 my-4'}>Dalej</button>
+                </>
+                : <p>Pobieranie pytań</p>
+            }
         </div>
     );
 }
