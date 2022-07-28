@@ -1,8 +1,8 @@
 import React from "react";
 
-function Question() {
+function Question({ question }) {
     return (
-        <div className={'bg-light p-3 border m-0'}>Question</div>
+        <div className={'bg-light p-3 border m-0'}>{ question }</div>
     );
 }
 

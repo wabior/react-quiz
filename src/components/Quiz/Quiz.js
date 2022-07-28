@@ -14,14 +14,7 @@ function Quiz() {
 
     return (
         <div className='container border p-0'>
-            {questions && questions.map((question) => {
-                return (
-                    <div key={question.id}>
-                        {question.id} {question.question}
-                    </div>
-                )
-            })}
-            <Question/>
+            {questions && <Question question={questions[0]['question']} />}
             <div className="row m-0">
                 <Answer/><Answer/>
                 <Answer/><Answer/>
