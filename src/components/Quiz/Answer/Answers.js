@@ -2,12 +2,13 @@ import React from "react";
 import Answer from "./Answer";
 
 function Questions({ question }) {
+    const answersArray = ['a', 'b', 'c', 'd'];
+
     return (
         <div className="row m-0">
-            <Answer answer={question.answer_a} />
-            <Answer answer={question.answer_b}/>
-            <Answer answer={question.answer_c}/>
-            <Answer answer={question.answer_d}/>
+            { answersArray.map((option, key) =>
+                <Answer answer={question[`answer_${option}`]} key={key} idx={key}/>
+            )}
         </div>
     )
 }
