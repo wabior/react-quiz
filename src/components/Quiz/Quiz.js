@@ -1,12 +1,13 @@
-import React, {useEffect, useState} from "react";
-import Question from "./Question/Question";
-import getQuestions from "./getQuestions";
-import Answers from "./Answer/Answers";
+import React, {useEffect, useState} from 'react';
+import Question from './Question/Question';
+import getQuestions from './getQuestions';
+import Answers from './Answer/Answers';
 
 function Quiz() {
     const [questions, setQuestions] = useState(null);
     const [questionNo, setQuestionNo] = useState(0);
     const [showNextQuestion, setShowNextQuestion] = useState(true);
+    const [answered, setAnswered] = useState(null);
 
     useEffect(() => {
         getQuestions()
@@ -14,6 +15,7 @@ function Quiz() {
     }, []);
 
     function increaseQuestionNo() {
+        setAnswered(null);
         if (questionNo < questions.length - 1) {
             if (questionNo >= questions.length - 1) {
                 setShowNextQuestion(false);
@@ -24,6 +26,7 @@ function Quiz() {
 
     const userAnswerHandler = (userAnswer = null) => {
         console.log('user answered: ', userAnswer);
+        setAnswered(userAnswer);
     }
 
     return (
@@ -34,12 +37,12 @@ function Quiz() {
                     <Question question={questions[questionNo]['question']} questionNo={questionNo + 1}
                               questionsCount={questions.length}/>
                     <Answers question={questions[questionNo]} onAnswer={(userAnswer) => userAnswerHandler(userAnswer)}/>
-                    {showNextQuestion && <button
+                    {showNextQuestion  && <div
                         type={'submit'} onClick={increaseQuestionNo}
-                        className={'btn btn-outline-secondary px-5 my-4'}
+                        className={`btn btn-outline-secondary px-5 my-4 ${answered === null ? 'disabled' : ''}`}
                     >
                         Dalej
-                    </button>}
+                    </div>}
                 </>
                 : <p>Pobieranie pytań</p>
             }

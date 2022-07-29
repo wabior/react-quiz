@@ -1,11 +1,11 @@
 import './App.css';
-import Header from "./components/Header/Header";
-import Menu from "./components/Menu/Menu";
-import Quiz from "./components/Quiz/Quiz";
+import Header from './components/Header/Header';
+import Menu from './components/Menu/Menu';
+import Quiz from './components/Quiz/Quiz';
 
 function App() {
     return (
-        <div className="App">
+        <div className='App'>
             <Header />
             {/*<Menu />*/}
             <Quiz />
