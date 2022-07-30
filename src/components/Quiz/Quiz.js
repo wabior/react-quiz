@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import Question from './Question/Question';
-import getQuestions from './getQuestions';
 import Answers from './Answers/Answers';
+import getQuestions from './getQuestions';
+import getCorrectAnswer from "./Question/getCorrectAnswer";
 
 function Quiz() {
     const [questions, setQuestions] = useState(null);
@@ -9,6 +10,7 @@ function Quiz() {
     const [showNextQuestion, setShowNextQuestion] = useState(true);
     const [answered, setAnswered] = useState(null);
     const [userAnswers, setUserAnswers] = useState([]);
+    const [score, setScore] = useState(0);
 
     useEffect(() => {
         getQuestions()
@@ -28,7 +30,14 @@ function Quiz() {
     function handleSubmit() {
         increaseQuestionNo();
         setUserAnswers([...userAnswers, answered]);
-        console.log(userAnswers);
+
+        getCorrectAnswer(questionNo)
+            .then(correctAnswer => {
+                console.log('odp:', answered , 'correct:', correctAnswer);
+                console.log('correct?', answered === correctAnswer);
+                if (answered === correctAnswer) setScore(score + 1);
+                console.log('score:', score);
+            });
     }
 
     const userAnswerHandler = (userAnswer = null) => {
@@ -37,7 +46,7 @@ function Quiz() {
 
     return (
         <div
-            className='quiz-container container h-100 h-md-75 mb-md-5'>
+            className='quiz-container container mt-5 mt-md-0 mb-md-5 justify-content-md-center'>
             {questions
                 ? <>
                     <Question question={questions[questionNo]['question']}
