@@ -10,7 +10,7 @@ function Questions({question, onAnswer}) {
                 <Answer answer={question[`answer_${option}`]}
                         key={idx}
                         answerNo={idx}
-                        onAnswer={(userAnswer) => onAnswer(userAnswer)}
+                        onAnswer={onAnswer}
                 />
             )}
         </div>

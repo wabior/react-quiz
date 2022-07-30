@@ -8,6 +8,7 @@ function Quiz() {
     const [questionNo, setQuestionNo] = useState(0);
     const [showNextQuestion, setShowNextQuestion] = useState(true);
     const [answered, setAnswered] = useState(null);
+    const [userAnswers, setUserAnswers] = useState([]);
 
     useEffect(() => {
         getQuestions()
@@ -24,14 +25,19 @@ function Quiz() {
         }
     }
 
+    function handleSubmit() {
+        increaseQuestionNo();
+        setUserAnswers([...userAnswers, answered]);
+        console.log(userAnswers);
+    }
+
     const userAnswerHandler = (userAnswer = null) => {
-        console.log('user answered: ', userAnswer);
         setAnswered(userAnswer);
     }
 
     return (
         <div
-            className='quiz-container container'>
+            className='quiz-container container h-100 h-md-75 mb-md-5'>
             {questions
                 ? <>
                     <Question question={questions[questionNo]['question']}
@@ -40,7 +46,9 @@ function Quiz() {
                     <Answers question={questions[questionNo]}
                              onAnswer={(userAnswer) => userAnswerHandler(userAnswer)}/>
                     {showNextQuestion &&
-                        <div type={'submit'} onClick={increaseQuestionNo}
+
+                        <div type={'submit'}
+                             onClick={handleSubmit}
                              className={`btn btn-outline-secondary px-5 my-4 ${answered === null ? 'disabled' : ''}`}
                         >
                             Dalej
