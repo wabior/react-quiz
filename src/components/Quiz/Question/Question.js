@@ -2,7 +2,7 @@ import React from 'react';
 
 function Question({ question, questionNo, questionsCount }) {
     return (
-        <div>
+        <div className={'container'}>
             <div>Pytanie { questionNo } / { questionsCount }</div>
             <div className={'h2 p-3 m-0'}>{ question }</div>
         </div>

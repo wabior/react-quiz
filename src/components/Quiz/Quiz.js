@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Question from './Question/Question';
 import getQuestions from './getQuestions';
-import Answers from './Answer/Answers';
+import Answers from './Answers/Answers';
 
 function Quiz() {
     const [questions, setQuestions] = useState(null);
@@ -31,18 +31,21 @@ function Quiz() {
 
     return (
         <div
-            className='container border p-0 pb-md-5 mb-md-5 d-flex flex-column align-items-center h-75 justify-content-center'>
+            className='quiz-container container'>
             {questions
                 ? <>
-                    <Question question={questions[questionNo]['question']} questionNo={questionNo + 1}
+                    <Question question={questions[questionNo]['question']}
+                              questionNo={questionNo + 1}
                               questionsCount={questions.length}/>
-                    <Answers question={questions[questionNo]} onAnswer={(userAnswer) => userAnswerHandler(userAnswer)}/>
-                    {showNextQuestion  && <div
-                        type={'submit'} onClick={increaseQuestionNo}
-                        className={`btn btn-outline-secondary px-5 my-4 ${answered === null ? 'disabled' : ''}`}
-                    >
-                        Dalej
-                    </div>}
+                    <Answers question={questions[questionNo]}
+                             onAnswer={(userAnswer) => userAnswerHandler(userAnswer)}/>
+                    {showNextQuestion &&
+                        <div type={'submit'} onClick={increaseQuestionNo}
+                             className={`btn btn-outline-secondary px-5 my-4 ${answered === null ? 'disabled' : ''}`}
+                        >
+                            Dalej
+                        </div>
+                    }
                 </>
                 : <p>Pobieranie pytań</p>
             }
