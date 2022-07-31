@@ -1,15 +1,15 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
-function Answer({answer, answerNo, onAnswer}) {
+function Answer({answer, answerNo, onAnswer, userAnswered}) {
     const handleAnswerClick = (userAnswer) => {
-        onAnswer(userAnswer);
+                onAnswer(userAnswer);
     }
 
     return (
-        <div className={'col-12 col-md-6 p-3'}>
+        <div className={'b col-12 col-md-6 p-3'}>
             <button type={'button'}
-                    onFocus={() => handleAnswerClick(Number(answerNo))}
-                    className='btn btn-outline-secondary fs-5 w-100 h-100 py-3'
+                    onClick={() => handleAnswerClick(Number(answerNo))}
+                    className={`btn fs-5 w-100 h-100 py-3 ${(userAnswered == answerNo) ? 'btn-secondary' : 'btn-outline-secondary'}`}
             >
                 {answer}
             </button>
