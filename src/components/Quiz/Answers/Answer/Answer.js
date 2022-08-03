@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 
 function Answer({answer, answerNo, onAnswer, userAnswered}) {
     const handleAnswerClick = (userAnswer) => {
