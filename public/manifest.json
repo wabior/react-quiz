@@ -1,6 +1,7 @@
 {
+  "homepage": "https://wabior.github.io/react-quiz/",
   "short_name": "React App",
-  "name": "Create React App Sample",
+  "name": "React Quiz",
   "icons": [
     {
       "src": "favicon.ico",
