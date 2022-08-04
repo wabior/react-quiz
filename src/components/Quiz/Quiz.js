@@ -44,23 +44,22 @@ function Quiz() {
     }
 
     return (<div
-            className='quiz-container container mt-3 mt-md-0 mb-md-5 justify-content-md-center'>
-            {finish ? <Score score={score}/>
-                    : (questions ? <>
-                    <Question question={questions[questionNo]['question']}
-                              questionNo={questionNo + 1}
-                              questionsCount={questions.length}/>
-                    <Answers question={questions[questionNo]}
-                             onAnswer={(userAnswer) => userAnswerHandler(userAnswer)}/>
+        className='quiz-container container'>
+        {finish ? <Score score={score} questionsCount={questions.length}/> : (questions ? <div>
+            <Question question={questions[questionNo]['question']}
+                      questionNo={questionNo + 1}
+                      questionsCount={questions.length}
+            />
+            <Answers question={questions[questionNo]}
+                     onAnswer={(userAnswer) => userAnswerHandler(userAnswer)}
+            />
+            <div onClick={handleSubmit}
+                 className={`btn btn-outline-secondary px-5 my-4 ${answered === null ? 'disabled' : ''}`}>
+                Dalej
+            </div>
 
-                    <div onClick={handleSubmit}
-                         className={`btn btn-outline-secondary px-5 my-4 ${answered === null ? 'disabled' : ''}`}
-                    >
-                        Dalej
-                    </div>
-
-                </> : <p>Pobieranie pytań</p>)}
-        </div>);
+        </div> : <p>Pobieranie pytań</p>)}
+    </div>);
 }
 
 export default Quiz;

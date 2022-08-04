@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Answer from './Answer/Answer';
 
-function Questions({question, onAnswer}) {
+function Answers({question, onAnswer}) {
     const answersArray = ['a', 'b', 'c', 'd'];
 
     const [userAnswer, setUserAnswer] = useState(null);
@@ -25,4 +25,4 @@ function Questions({question, onAnswer}) {
     )
 }
 
-export default Questions;
+export default Answers;

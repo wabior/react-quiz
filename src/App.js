@@ -13,9 +13,8 @@ function App() {
 
     return (
         <div className='App'>
-            <Header />
             {   quizStatus === 'initial'
-                    ? <Welcome handleQuizStatus={handleQuizStatus}/>
+                    ? <> <Header /> <Welcome handleQuizStatus={handleQuizStatus}/> </>
                     : <Quiz />
             }
         </div>
